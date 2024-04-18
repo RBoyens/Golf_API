@@ -1,1 +1,2 @@
-/config/mysqlconnection.py
+#ignore all directories with the name config
+config/
