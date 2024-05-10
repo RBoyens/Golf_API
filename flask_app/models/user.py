@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash
 from flask_app.config.mysqlconnection import connectToMySQL
 
 class User:
@@ -38,7 +38,11 @@ class User:
     #Get By Email
     @classmethod
     def get_by_email(cls,data):
-        pass
+        query = """ SELET * FROM users WHERE email = %(email)s"""
+        result = connectToMySQL('golf_schema').query_db(query, data)
+        if len(result) < 1:
+            return False
+        return cls(result[0])
     
     #Get By ID
     @classmethod
@@ -46,6 +50,15 @@ class User:
         pass
     
     #Validate User
-    @classmethod
+    @staticmethod
     def validate_user(user):
-        pass
+        is_valid = True
+        if len (user['first_name']) < 3:
+            flash ("First Name must be at least 3 characters.")
+            is_valid = False
+        if len (user['last_name']) < 3:
+            flash ("Last Name must be at least 3 characters.")
+            is_valid = False
+        if len (user['password']) < 8:
+            flash ("Password must be at least 8 characters.")
+        return is_valid

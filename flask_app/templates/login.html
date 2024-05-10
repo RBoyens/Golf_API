@@ -14,22 +14,24 @@
         <div class="signup-section">
             <header>Signup</header>
 
-            <div class="social-buttons">
+            <!-- <div class="social-buttons">
                 <button><i class="bx bxl-google"></i> Use Google</button>
                 <button><i class="bx bxl-google"></i> Use Apple</button>
-            </div>
+            </div> -->
 
             <div class="seperator">
                 <div class="line"></div>
-                <p>Or</p>
+                <!-- <p>Or</p> -->
                 <div class="line"></div>
             </div>
 
-            <form action="#">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="password" placeholder="Password" required>
-                <a href="#"> Forgot Password</a>
+            <form action="/register" method="post">
+                <input type="text" name="first_name" id="first_name" placeholder="First Name">
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+                <input type="email" name="email" id="email" placeholder="Email Address">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+
                 <button type="submit" class="btn">Signup</button>
             </form>
         </div>
@@ -48,7 +50,7 @@
                 <div class="line"></div>
             </div>
 
-            <form action="#">
+            <form action="/login" method="post">
                 <input type="email" placeholder="Email Address" required>
                 <input type="password" placeholder="Passowrd" required>
                 <a href="#"> Forgot Password</a>
