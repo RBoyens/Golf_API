@@ -27,7 +27,7 @@ def register_user():
         "first_name":request.form['first_name'],
         "last_name":request.form['last_name'],
         "email":request.form['email'],
-        "passwords":pw_hash
+        "password":pw_hash
     }
     user_id = User.save_new_user(data)
     session['id'] = user_id

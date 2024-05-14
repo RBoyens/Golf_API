@@ -39,10 +39,10 @@ class User:
     @classmethod
     def get_by_email(cls,data):
         query = """ SELET * FROM users WHERE email = %(email)s"""
-        result = connectToMySQL('golf_schema').query_db(query, data)
-        if len(result) < 1:
+        results = connectToMySQL('golf_schema').query_db(query, data)
+        if results < 1:
             return False
-        return cls(result[0])
+        return cls(results[0])
     
     #Get By ID
     @classmethod
