@@ -77,16 +77,12 @@ li{
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+    padding-top: 5px;
 }
 
 .login-section header{
     color: #333;
     opacity: .6;
-}
-
-.login-section header{
-    color: #333;
-    opacity: .6 ;
 }
 
 .social-buttons{

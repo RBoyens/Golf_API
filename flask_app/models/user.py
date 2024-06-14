@@ -1,5 +1,8 @@
 from flask import Flask, flash
 from flask_app.config.mysqlconnection import connectToMySQL
+import re
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+password_pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
 
 class User:
     def __init__(self,data):
@@ -38,9 +41,9 @@ class User:
     #Get By Email
     @classmethod
     def get_by_email(cls,data):
-        query = """ SELET * FROM users WHERE email = %(email)s"""
+        query = """ SELECT * FROM users WHERE email = %(email)s"""
         results = connectToMySQL('golf_schema').query_db(query, data)
-        if results < 1:
+        if len(results) < 1:
             return False
         return cls(results[0])
     
